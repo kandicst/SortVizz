@@ -70,7 +70,7 @@ void MyWindow::draw()
 
 	for (int i = 0; i < vectorNUM.size(); i++) {
 		vectorNUM[i]->draw();
-		vectorNUM[i]->write(to_string(vectorNUM[i]->value).c_str());
+		vectorNUM[i]->write();
 	}
 }
 
@@ -129,14 +129,14 @@ bool MyWindow::initializeSort()
 
 
 		if (quickCheck.value()) {
-			qs.sort(vectorNUM, flightNum, instrukcije);
+			qs.sort(vectorNUM, instrukcije);
 			outputVector = vectorNUM;
 			header = "Algorithm used:\tQuick sort\nExpected number of comparisons: nlog(n) => " +
 				to_string(ln) + "\nActual number of comparisons:" + to_string(qs.getNumCmps()) + "\nNumber of swaps: " + to_string(qs.getNumSwaps());
 
 		}
 		else if (selectionCheck.value()) {
-			ss.sort(vectorNUM, flightNum, instrukcije);
+			ss.sort(vectorNUM, instrukcije);
 			outputVector = vectorNUM;
 			header = "Algorithm used:\t\Selection sort\nExpected num of comparisons: (n^2-n)/2 => " +
 				to_string((mainVector.size()*mainVector.size() - mainVector.size()) / 2) + "\nActual number of comparisons: " + to_string(ss.getNumCmps()) +
@@ -393,6 +393,7 @@ void MyWindow::setIO(IO io)
 {
 	inOut = io;
 	mainVector = vector<VisualizedNumber>(io.viz);
+	//cout << io.njiz[0].value << " OVO JE VREDNOST" << endl;
 	sorted = false;
 	fill();
 

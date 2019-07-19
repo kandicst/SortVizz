@@ -73,8 +73,6 @@ private:
 	//vectors with widgets for different criteria of sorting
 	vector<VisualizedNumber*> vectorNUM;
 	vector<VisualizedNumber*> outputVector;
-	Tip criteria = flightNum;
-
 
 	void draw();
 };

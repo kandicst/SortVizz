@@ -7,7 +7,7 @@
 //=======================================================================================
 #pragma once
 #include "Graph.h"
-#include "Flight.h"
+#include <iostream>
 using namespace Graph_lib;
 
 
@@ -16,22 +16,21 @@ class VisualizedNumber : public Fl_Widget{
 
 public:
 
-	double value;
-	Flight flight;
+	int value;
 	int unsortedIndex;
 	int sortedIndex;
 	Fl_Color boja = FL_DARK_CYAN;
 	int numOfFlightsTotal;
 
-	VisualizedNumber(double value, int sor, int unsor,int num);
-	VisualizedNumber(double value, int sor, int unsor);
+	VisualizedNumber(double value_, int sor, int unsor,int num);
+	VisualizedNumber(double value_, int sor, int unsor);
 	VisualizedNumber(const VisualizedNumber &vf);
 	
 	void draw();
-	void write(const char* s);
+	void write();
 	void move(int jean, int dva);
 
-	bool operator =(VisualizedNumber &vf);
+	VisualizedNumber& operator =(VisualizedNumber &vf);
 	
 
 };

@@ -20,14 +20,14 @@ using namespace std;
 int main(int argc, char* argv[]) {
 
 	IO inout;
-	inout.check_arguments(argc, argv);
+	inout.loadFlights();
 
-	
-	MyWindow w(Point(450,250),800, 600, "GUI Aplikacija");
+	MyWindow w(Point(450,250),800, 600, "SortVizz");
 	w.color(FL_DARK2);
 	w.setIO(inout);
 	w.wait_for_button();
 	
+
 	return 0;
 }
 

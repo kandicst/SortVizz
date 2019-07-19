@@ -25,7 +25,7 @@ protected:
 public:
 	
 	// main entry point
-	virtual void sort(std::vector<VisualizedNumber*> &data, Tip, list<Instruction*> &instructions) = 0;
+	virtual void sort(std::vector<VisualizedNumber*> &data, list<Instruction*> &instructions) = 0;
 	// returns number of comparisons
 	unsigned long getNumCmps();
 	unsigned long getNumSwaps();
@@ -38,7 +38,7 @@ class SelectionSort : public Sort
 {
 public:
 
-	void sort(std::vector<VisualizedNumber*> &data,Tip, list<Instruction*> &instructions);
+	void sort(std::vector<VisualizedNumber*> &data, list<Instruction*> &instructions);
 
 };
 
@@ -48,9 +48,9 @@ class QuickSort : public Sort
 
 public:
 	
-	void sort(std::vector<VisualizedNumber*> &data, Tip, list<Instruction*> &instructions);
-	void quickSort(vector<VisualizedNumber*> &data, list<Instruction*> &instructions, int low, int high, Tip en);
-	int partition(std::vector<VisualizedNumber*> &a, list<Instruction*> &instructions,int i ,int j,Tip en);
+	void sort(std::vector<VisualizedNumber*> &data, list<Instruction*> &instructions);
+	void quickSort(vector<VisualizedNumber*> &data, list<Instruction*> &instructions, int low, int high);
+	int partition(std::vector<VisualizedNumber*> &a, list<Instruction*> &instructions,int i ,int j);
 	
 };
 

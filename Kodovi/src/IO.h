@@ -26,14 +26,13 @@ public:
 	string crit = "";
 	string type = "";
 	vector<double> nums;
-	vector<VisualizedNumber> viz;
+	vector<VisualizedNumber> viz, njiz;
 
 	IO() {}
 	IO(IO &io);
 	IO(string s1, string s2);
 	IO(string s1);
 
-	void check_arguments(int argc, char* argv[]);
 	void setInPath(string s);
 	void loadFlights();
 	void writeFlights(vector<VisualizedNumber*> &v,string header);

@@ -1,5 +1,4 @@
-﻿  IO.cpp
-c:\users\stefan\desktop\sortvizz\kodovi\src\io.cpp(61): warning C4101: 'e': unreferenced local variable
-Flight.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
+﻿  Sort.cpp
+Graph.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
   SortingFlights.vcxproj -> C:\Users\Stefan\Desktop\SortVizz\Kodovi\src\Debug\SortingFlights.exe
   SortingFlights.vcxproj -> C:\Users\Stefan\Desktop\SortVizz\Kodovi\src\Debug\SortingFlights.pdb (Full PDB)

@@ -1,15 +1,14 @@
 #include "VisualizedNumber.h"
 
 
-VisualizedNumber::VisualizedNumber(double value, int sor, int unsor,int num):
-	value(value),sortedIndex(sor),unsortedIndex(unsor), numOfFlightsTotal(num),
+VisualizedNumber::VisualizedNumber(double value_, int sor, int unsor,int num):
+	value(value_),sortedIndex(sor),unsortedIndex(unsor), numOfFlightsTotal(num),
 	Fl_Widget(120 + unsor * (500/num +1+ 50/num), 50 + 250 - 250/num * (sor + 1), 500 / num , (250/num) * (sor + 1)) 
 {
-	
 }
 
-VisualizedNumber::VisualizedNumber(double value, int sor, int unsor) :
-	value(value), sortedIndex(sor), unsortedIndex(unsor),numOfFlightsTotal(10),
+VisualizedNumber::VisualizedNumber(double value_, int sor, int unsor) :
+	value(value_), sortedIndex(sor), unsortedIndex(unsor),numOfFlightsTotal(10),
 	Fl_Widget(100 + unsor * 55, 50 + 250 - 25 * (sor + 1), 50, 25 * (sor + 1))
 {
 
@@ -18,7 +17,7 @@ VisualizedNumber::VisualizedNumber(double value, int sor, int unsor) :
 
 VisualizedNumber::VisualizedNumber(const VisualizedNumber & vf):
 	Fl_Widget(100 + vf.unsortedIndex * 55, 50 + 250 - 25 * (vf.sortedIndex + 1), 50, 25 * (vf.sortedIndex + 1), ""),
-	flight(vf.flight),
+	value(vf.value),
 	sortedIndex(vf.sortedIndex),
 	unsortedIndex(vf.unsortedIndex),
 	numOfFlightsTotal(vf.numOfFlightsTotal)
@@ -42,12 +41,12 @@ void VisualizedNumber::draw()
 
 
 
-void VisualizedNumber::write(const char *s)
+void VisualizedNumber::write()
 	//writes text inside the widget
 {
 	fl_color(FL_BLACK);
 	fl_font(0, 14-numOfFlightsTotal/10);
-	fl_draw(90, s, x()+280/ numOfFlightsTotal, y()+250/numOfFlightsTotal*(sortedIndex+1) -20/ numOfFlightsTotal);
+	fl_draw(90, to_string(value).c_str(), x()+280/ numOfFlightsTotal, y()+250/numOfFlightsTotal*(sortedIndex+1) -20/ numOfFlightsTotal);
 	if (sortedIndex < 10) {
 		fl_draw(0, std::to_string(sortedIndex+1).c_str(), x() + 190/ numOfFlightsTotal, y() + 250 / numOfFlightsTotal * (sortedIndex + 1) + 210/numOfFlightsTotal);
 	}
@@ -64,12 +63,16 @@ void VisualizedNumber::move(int jean, int dva)
 	draw();
 }
 
-bool VisualizedNumber::operator=(VisualizedNumber &vf)
-{
-	string s1 = flight.getFNumber();
-	string s2 = vf.flight.getFNumber();
 
-	return strcmp(vf.flight.getFNumber().c_str(),s1.c_str());
+VisualizedNumber& VisualizedNumber::operator=(VisualizedNumber &vf)
+{
+	value = vf.value;
+	unsortedIndex = vf.unsortedIndex;
+	sortedIndex = vf.sortedIndex;
+	boja = vf.boja;
+	numOfFlightsTotal = vf.numOfFlightsTotal;
+
+	return *this;
 }
 
 

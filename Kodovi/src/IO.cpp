@@ -33,10 +33,18 @@ IO::IO(string s1):
 	loadFlights();
 }
 
+
 void IO::loadFlights()
 	//loading flights info from specified source
 {
 
+	for (int i = 0; i < 10; i++) {
+		VisualizedNumber vn(i, 0, i, 10);
+		viz.push_back(vn);
+	}
+
+	return;
+	/*
 	try {
 		nums.clear();
 		viz.clear();
@@ -64,6 +72,7 @@ void IO::loadFlights()
 			system("start Resources\\zzz.pdf");
 		}
 	}
+	*/
 }
 
 void IO::writeFlights(vector<VisualizedNumber*> &v,string header)
@@ -81,7 +90,7 @@ void IO::writeFlights(vector<VisualizedNumber*> &v,string header)
 	{
 		myfile << header << endl;
 		for (int i = 0; i < v.size(); i++) {
-			myfile << (v[i]->flight);
+			//myfile << (v[i]->flight);
 		}
 		string s = "Flights were successfully writen to: " + outPath;
 		fl_message(s.c_str());
@@ -94,41 +103,6 @@ void IO::writeFlights(vector<VisualizedNumber*> &v,string header)
 }
 
 
-
-void IO::check_arguments(int argc, char* argv[]) {
-
-
-	if (argc == 5) {
-		inPath = argv[1];
-		outPath = argv[2];
-		crit = argv[3];
-		type = argv[4];
-	}
-	else if (argc == 4) {
-		inPath = argv[1];
-		outPath = argv[2];
-		crit = argv[3];
-	}
-	else if (argc == 3) {
-		inPath = argv[1];
-		outPath = argv[2];
-	}
-	else if (argc == 2) {
-		inPath = argv[1];
-	}
-	else if (argc == 1 ) {
-		//inPath = "Test01.txt";
-		loadFlights();
-	}
-	else {
-		PlaySound(TEXT("Resources\\notification.wav"), NULL, SND_ASYNC);
-		if (fl_ask("Input arguments were invalid\n Do you want to read the documentation?")) {
-			system("start zzz.pdf");
-		}
-	}
-
-	loadFlights();
-}
 
 void IO::setInPath(string s)
 	//changing the input file requires reload of flights and widgets displayed

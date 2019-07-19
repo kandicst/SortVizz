@@ -25,7 +25,7 @@ unsigned long Sort::getNumSwaps()
 }
 
 
-void SelectionSort::sort(std::vector<VisualizedNumber*>&data, Tip en, list<Instruction*> &instructions)
+void SelectionSort::sort(std::vector<VisualizedNumber*>&data, list<Instruction*> &instructions)
 {
 	num_cmps = 0;
 	num_swaps = 0;
@@ -38,7 +38,7 @@ void SelectionSort::sort(std::vector<VisualizedNumber*>&data, Tip en, list<Instr
 		for (int j = i + 1; j < data.size(); j++) {
 			instructions.push_back(new ColorChange(data[j], FL_YELLOW));
 			num_cmps += 1;
-			if(data[j]->flight.compare(data[min]->flight, en)  < 0){
+			if (data[j]->value < data[min]->value) {
 				instructions.push_back(new ColorSwap(data[min], FL_DARK_CYAN, data[j], FL_DARK_RED));
 				min = j;
 			}
@@ -66,24 +66,24 @@ void SelectionSort::sort(std::vector<VisualizedNumber*>&data, Tip en, list<Instr
 
 
 //Quick Sort
-void QuickSort::sort(vector<VisualizedNumber*> &data, Tip en, list<Instruction*> &instructions)
+void QuickSort::sort(vector<VisualizedNumber*> &data, list<Instruction*> &instructions)
 {
 	num_cmps = 0;
 	num_swaps = 0;
 	instructions.clear();
-	quickSort(data, instructions,0, data.size() - 1,en);
+	quickSort(data, instructions,0, data.size() - 1);
 }
 
 
 
-void QuickSort::quickSort(vector<VisualizedNumber*> &data, list<Instruction*> &instructions, int low, int high,Tip en)
+void QuickSort::quickSort(vector<VisualizedNumber*> &data, list<Instruction*> &instructions, int low, int high)
 {
 	if (low < high) {
-		int m = partition(data, instructions, low, high,en); 
+		int m = partition(data, instructions, low, high); 
 										 
-		quickSort(data, instructions, low, m - 1,en); 
+		quickSort(data, instructions, low, m - 1); 
 								  
-		quickSort(data, instructions, m + 1, high,en); 
+		quickSort(data, instructions, m + 1, high); 
 	}
 	else if (low == high) {
 		instructions.push_back(new ColorChange(data[low], FL_GREEN));
@@ -92,7 +92,7 @@ void QuickSort::quickSort(vector<VisualizedNumber*> &data, list<Instruction*> &i
 
 
 
-int QuickSort::partition(vector<VisualizedNumber*> &a, list<Instruction*> &instructions, int i, int j, Tip en) {
+int QuickSort::partition(vector<VisualizedNumber*> &a, list<Instruction*> &instructions, int i, int j) {
 
 	VisualizedNumber *p = a[i]; // p is the pivot
 	instructions.push_back(new ColorChange(a[i], FL_DARK_RED));
@@ -101,9 +101,9 @@ int QuickSort::partition(vector<VisualizedNumber*> &a, list<Instruction*> &instr
 		num_cmps += 1;
 		instructions.push_back(new ColorChange(a[k], FL_YELLOW));
 
-		if (a[k]->flight.compare(p->flight, en)  < 0) {
+		if (a[k]->value < p->value) {
 			m++;
-			if (a[k]->flight != a[m]->flight) {
+			if (a[k]->value != a[m]->value) {
 				swap(a[k], a[m]);
 				num_swaps += 1;
 				instructions.push_back(new WidgetSwap(a[k], a[m]));

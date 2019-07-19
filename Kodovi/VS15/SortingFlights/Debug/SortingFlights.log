@@ -1,0 +1,24 @@
+﻿  VisualizedFlight.cpp
+  Sort.cpp
+  MyWindow.cpp
+c:\users\stefan\desktop\sortvizz\kodovi\vs15\sortingflights\mywindow.cpp(213): warning C4129: 'S': unrecognized character escape sequence
+c:\users\stefan\desktop\sortvizz\kodovi\vs15\sortingflights\mywindow.cpp(236): warning C4129: 'S': unrecognized character escape sequence
+c:\users\stefan\desktop\sortvizz\kodovi\vs15\sortingflights\mywindow.cpp(259): warning C4129: 'S': unrecognized character escape sequence
+c:\users\stefan\desktop\sortvizz\kodovi\vs15\sortingflights\mywindow.cpp(281): warning C4129: 'S': unrecognized character escape sequence
+c:\users\stefan\desktop\sortvizz\kodovi\vs15\sortingflights\mywindow.cpp(362): warning C4551: function call missing argument list
+c:\users\stefan\desktop\sortvizz\kodovi\vs15\sortingflights\mywindow.cpp(389): warning C4129: 'S': unrecognized character escape sequence
+  MOJ.cpp
+  main.cpp
+  IO.cpp
+c:\users\stefan\desktop\sortvizz\kodovi\vs15\sortingflights\io.cpp(60): warning C4101: 'e': unreferenced local variable
+  Instruction.cpp
+  Window.cpp
+  Simple_window.cpp
+  GUI.cpp
+  Graph.cpp
+  Flight.cpp
+  Generating Code...
+c:\users\stefan\desktop\sortvizz\kodovi\vs15\sortingflights\flight.cpp(106): warning C4715: 'Flight::compare': not all control paths return a value
+Flight.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
+  SortingFlights.vcxproj -> C:\Users\Stefan\Desktop\SortVizz\Kodovi\VS15\SortingFlights\Debug\SortingFlights.exe
+  SortingFlights.vcxproj -> C:\Users\Stefan\Desktop\SortVizz\Kodovi\VS15\SortingFlights\Debug\SortingFlights.pdb (Full PDB)

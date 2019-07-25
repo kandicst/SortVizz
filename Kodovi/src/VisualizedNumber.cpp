@@ -46,20 +46,19 @@ void VisualizedNumber::write()
 {
 	fl_color(FL_BLACK);
 	fl_font(0, 14-numOfFlightsTotal/10);
-	fl_draw(90, to_string(value).c_str(), x()+280/ numOfFlightsTotal, y()+250/numOfFlightsTotal*(sortedIndex+1) -20/ numOfFlightsTotal);
-	if (sortedIndex < 10) {
-		fl_draw(0, std::to_string(sortedIndex+1).c_str(), x() + 190/ numOfFlightsTotal, y() + 250 / numOfFlightsTotal * (sortedIndex + 1) + 210/numOfFlightsTotal);
+	if (value < 10) {
+		fl_draw(0, to_string(value).c_str(), x() + 190 / numOfFlightsTotal, y() + 250 / numOfFlightsTotal*(sortedIndex + 1) - 20 / numOfFlightsTotal);
 	}
 	else {
-		fl_draw(0, std::to_string(sortedIndex+1).c_str(), x() + 150/ numOfFlightsTotal, y() + 250 / numOfFlightsTotal * (sortedIndex + 1) + 210/ numOfFlightsTotal);
+		fl_draw(0, to_string(value).c_str(), x() + 150 / numOfFlightsTotal, y() + 250 / numOfFlightsTotal*(sortedIndex + 1) - 20 / numOfFlightsTotal);
 	}
 	
 	redraw();
 }
 
-void VisualizedNumber::move(int jean, int dva)
+void VisualizedNumber::move(int x_offset, int y_offset)
 {
-	position(x() + jean, y() + dva);
+	position(x() + x_offset, y() + y_offset);
 	draw();
 }
 

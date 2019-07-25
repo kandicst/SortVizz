@@ -12,7 +12,6 @@
 #include <list>
 
 
-
 // Sort class
 class Sort
 {
@@ -33,6 +32,33 @@ public:
 };
 
 
+//---------------------------------------------------------------------------------------------------------------
+
+
+// SelectionSort class
+class BubbleSort : public Sort
+{
+public:
+
+	void sort(std::vector<VisualizedNumber*> &data, list<Instruction*> &instructions);
+
+};
+
+
+//---------------------------------------------------------------------------------------------------------------
+
+
+// SelectionSort class
+class InsertionSort : public Sort
+{
+public:
+
+	void sort(std::vector<VisualizedNumber*> &data, list<Instruction*> &instructions);
+
+};
+
+//---------------------------------------------------------------------------------------------------------------
+
 // SelectionSort class
 class SelectionSort : public Sort
 {
@@ -41,6 +67,9 @@ public:
 	void sort(std::vector<VisualizedNumber*> &data, list<Instruction*> &instructions);
 
 };
+
+
+//---------------------------------------------------------------------------------------------------------------
 
 
 class QuickSort : public Sort

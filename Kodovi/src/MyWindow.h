@@ -35,12 +35,12 @@ struct MyWindow : Window {
 
 private:
 	//Widgets and their respective callbacks for different ways of sorting
-	CheckBox bruteCheck;
+	CheckBox bubbleCheck;
 	CheckBox insertionCheck;
 	CheckBox quickCheck;
 	CheckBox selectionCheck;
 	Slider slider;
-	static void cb_bruteB(Address, Address);	void bruteB();
+	static void cb_bubbleB(Address, Address);	void bubbleB();
 	static void cb_insertionB(Address, Address);	void insertionB();
 	static void cb_qB(Address, Address);	void qB();
 	static void cb_selB(Address, Address);	void selB();
@@ -63,10 +63,13 @@ private:
 
 	bool initializeSort();
 	void displayStat();
+	void deleteDynObjects(list<Instruction*> vektor);
 
 	string header;
 	SelectionSort ss;
 	QuickSort qs;
+	BubbleSort bubsort;
+	InsertionSort inssort;
 	float plotSpeed = 105;
 	list<Instruction*> instrukcije;
 

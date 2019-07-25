@@ -28,14 +28,11 @@ MyWindow::MyWindow(Point x,int w, int h, const string& title) :
 	finish(Point(w / 2 - 17 + 50, 510), 35, 20, "@>|", cb_finish),
 	rewind(Point(w / 2 - 17 - 50, 510), 35, 20, "@|<", cb_rewind),
 	header(""),
-	bruteCheck(Point(50, 400), 90, 25, "Brute force sort", cb_bruteB),
+	bubbleCheck(Point(50, 400), 90, 25, "Bubble sort", cb_bubbleB),
 	quickCheck(Point(200, 430), 90, 25, "Quick sort", cb_qB),
 	selectionCheck(Point(50, 430), 90, 25, "Selection sort", cb_selB),
 	insertionCheck(Point(200, 400), 90, 25, "Insertion sort", cb_insertionB),
 
-	//fnumberCheck(Point(200, 370), 90, 25, "Flight Num", cb_fnumB),
-	//destinationCheck(Point(200, 430), 90, 25, "Destination", cb_destB),
-	//gateCheck(Point(200, 460), 90, 25, "Gate", cb_gB),
 	about(Point(0, 0), 65, 25, "@FLTK", cb_about),
 	inFile(Point(65, 0), 65, 25, "@fileopen", cb_inFile),
 	outFile(Point(130, 0), 65, 25, "@filesaveas", cb_outFile),
@@ -51,7 +48,7 @@ MyWindow::MyWindow(Point x,int w, int h, const string& title) :
 	attach(quickCheck);
 	attach(selectionCheck);
 	attach(insertionCheck);
-	attach(bruteCheck);
+	attach(bubbleCheck);
 	attach(slider);
 	attach(inFile);
 	attach(outFile);
@@ -143,6 +140,20 @@ bool MyWindow::initializeSort()
 				"\nNumber of swaps:    " + to_string(ss.getNumSwaps());
 
 		}
+		else if (bubbleCheck.value()) {
+			bubsort.sort(vectorNUM, instrukcije);
+			outputVector = vectorNUM;
+			header = "Algorithm used:\t\Selection sort\nExpected num of comparisons: (n^2-n)/2 => " +
+				to_string((mainVector.size()*mainVector.size() - mainVector.size()) / 2) + "\nActual number of comparisons: " + to_string(bubsort.getNumCmps()) +
+				"\nNumber of swaps:    " + to_string(bubsort.getNumSwaps());
+		}
+		else if (insertionCheck.value()) {
+			inssort.sort(vectorNUM, instrukcije);
+			outputVector = vectorNUM;
+			header = "Algorithm used:\t\Selection sort\nExpected num of comparisons: (n^2-n)/2 => " +
+				to_string((mainVector.size()*mainVector.size() - mainVector.size()) / 2) + "\nActual number of comparisons: " + to_string(inssort.getNumCmps()) +
+				"\nNumber of swaps:    " + to_string(inssort.getNumSwaps());
+		}
 		else {
 			PlaySound(TEXT("Resources\\notification.wav"), NULL, SND_ASYNC);
 			fl_alert("You need to select a sorting algorithm");
@@ -217,6 +228,7 @@ void MyWindow::fin()
 		}
 		Sleep(plotSpeed);
 	}
+	deleteDynObjects(instrukcije);
 	instrukcije.clear();
 
 	displayStat();
@@ -284,7 +296,7 @@ void MyWindow::qB()
 	}
 	else if (quickCheck.value()) {
 		selectionCheck.value(0);
-		bruteCheck.value(0);
+		bubbleCheck.value(0);
 		insertionCheck.value(0);
 	}
 }
@@ -316,19 +328,19 @@ void MyWindow::insertionB()
 //------------------------------------------------------------------------------
 
 
-void MyWindow::cb_bruteB(Address, Address pw)
+void MyWindow::cb_bubbleB(Address, Address pw)
 {
-	reference_to<MyWindow>(pw).bruteB();
+	reference_to<MyWindow>(pw).bubbleB();
 }
 
 
-void MyWindow::bruteB()
+void MyWindow::bubbleB()
 {
 	if (sorting) {
-		bruteCheck.value(abs(bruteCheck.value() - 1)); // 0->1 , 1->0
+		bubbleCheck.value(abs(bubbleCheck.value() - 1)); // 0->1 , 1->0
 	
 	}
-	else if (bruteCheck.value()) {
+	else if (bubbleCheck.value()) {
 		selectionCheck.value(0);
 		quickCheck.value(0);
 		insertionCheck.value(0);
@@ -356,7 +368,7 @@ void MyWindow::selB()
 	else if (selectionCheck.value()) {
 		quickCheck.value(0);
 		insertionCheck.value(0);
-		bruteCheck.value(0);
+		bubbleCheck.value(0);
 	}
 }
 
@@ -501,6 +513,10 @@ void MyWindow::author() {
 
 //------------------------------------------------------------------------------
 
+void MyWindow::deleteDynObjects(list<Instruction*> vektor) {
 
+	for (auto i : vektor)
+		delete i;
+}
 
 //zi end

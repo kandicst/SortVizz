@@ -135,3 +135,58 @@ int QuickSort::partition(vector<VisualizedNumber*> &a, list<Instruction*> &instr
 
 
 //-----------------------------------------------------------------------------------------------------------
+
+void BubbleSort::sort(std::vector<VisualizedNumber*>& data, list<Instruction*>& instructions)
+{
+
+	num_cmps = 0;
+	num_swaps = 0;
+	instructions.clear();
+
+	int i, j;
+	for (i = 0; i < data.size() - 1; i++) {
+		// Last i elements are already in place  
+		for (j = 0; j <  data.size() - i - 1; j++) {
+			num_cmps+=1;
+			instructions.push_back(new ColorChange(data[j], FL_DARK_RED));
+			instructions.push_back(new ColorChange(data[j+1], FL_DARK_RED));
+			if (data[j]->value > data[j + 1]->value) {
+				swap(data[j], data[j + 1]);
+				instructions.push_back(new WidgetSwap(data[j], data[j+1]));
+				instructions.push_back(new ColorChange(data[j], FL_DARK_CYAN));
+				num_swaps+=1;
+			}
+			else {
+				instructions.push_back(new ColorChange(data[j], FL_DARK_CYAN));
+			}
+		}
+		instructions.push_back(new ColorChange(data[data.size() - i - 1], FL_GREEN));
+	}
+	
+	instructions.push_back(new ColorChange(data[0], FL_GREEN));
+}
+
+
+//-----------------------------------------------------------------------------------------------------------
+
+
+void InsertionSort::sort(std::vector<VisualizedNumber*>& data, list<Instruction*>& instructions)
+{
+	/*
+	int i, j;
+	VisualizedNumber* key;
+	for (i = 1; i < data.size(); i++)
+	{
+		instructions.push_back(new ColorChange(data[i], FL_DARK_RED));
+		key = data[i];
+		j = i - 1;
+
+		while (j >= 0 && data[j] > key)
+		{
+			//data[j + 1] = data[j];
+			j = j - 1;
+		}
+		data[j + 1] = key;
+	}
+	*/
+}

@@ -1,11 +1,11 @@
-﻿cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
-  MyWindow.cpp
-c:\users\stefan\desktop\sortvizz\kodovi\src\mywindow.cpp(138): warning C4129: 'S': unrecognized character escape sequence
-c:\users\stefan\desktop\sortvizz\kodovi\src\mywindow.cpp(146): warning C4129: 'S': unrecognized character escape sequence
-c:\users\stefan\desktop\sortvizz\kodovi\src\mywindow.cpp(221): warning C4551: function call missing argument list
-c:\users\stefan\desktop\sortvizz\kodovi\src\mywindow.cpp(249): warning C4129: 'S': unrecognized character escape sequence
-  main.cpp
+﻿  IO.cpp
   Generating Code...
+  Skipping... (no relevant changes detected)
+  main.cpp
+  VisualizedNumber.cpp
+  Sort.cpp
+  MyWindow.cpp
+  Instruction.cpp
 Graph.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
-  SortingFlights.vcxproj -> C:\Users\Stefan\Desktop\SortVizz\Kodovi\src\Debug\SortingFlights.exe
-  SortingFlights.vcxproj -> C:\Users\Stefan\Desktop\SortVizz\Kodovi\src\Debug\SortingFlights.pdb (Full PDB)
+  SortingFlights.vcxproj -> C:\Users\Stefan\Desktop\Projekti\SortVizz\Kodovi\src\Debug\SortingFlights.exe
+  SortingFlights.vcxproj -> C:\Users\Stefan\Desktop\Projekti\SortVizz\Kodovi\src\Debug\SortingFlights.pdb (Full PDB)

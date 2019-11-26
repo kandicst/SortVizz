@@ -188,5 +188,8 @@ void InsertionSort::sort(std::vector<VisualizedNumber*>& data, list<Instruction*
 		}
 		data[j + 1] = key;
 	}
+
+
+
 	*/
 }

@@ -38,41 +38,15 @@ void IO::loadFlights()
 	//loading flights info from specified source
 {
 
+
 	for (int i = 0; i < 10; i++) {
-		VisualizedNumber vn(i, 0, i, 10);
+		VisualizedNumber vn(rand() % 100, 0, i, 10);
 		viz.push_back(vn);
 	}
 
+
+
 	return;
-	/*
-	try {
-		nums.clear();
-		viz.clear();
-
-		if (strcmp(inPath.c_str(), "") == 0) {		//path not chosen
-			return;
-		}
-
-		ifstream ifs(inPath);
-		int i = 0;
-		while (!ifs.eof()) {
-			double num;
-			ifs >> num;
-			nums.push_back(num);
-			i += 1;
-		}
-		
-		for (int i = 0; i < nums.size(); i++) {
-			viz.push_back(VisualizedNumber(nums[i], 0, i, nums.size()));
-		}
-	}
-	catch (exception& e) {
-		PlaySound(TEXT("Resources\\notification.wav"), NULL, SND_ASYNC);
-		if (fl_ask("The input file you've chosen is invalid.\nDo you want to see how it should be structured?")) {
-			system("start Resources\\zzz.pdf");
-		}
-	}
-	*/
 }
 
 void IO::writeFlights(vector<VisualizedNumber*> &v,string header)
